@@ -5,6 +5,7 @@ import os
 from IPython.display import Markdown, display
 
 
+# 根据目录下的数据，构建索引
 def construct_index(directory_path):
     # set maximum input size
     max_input_size = 4096
