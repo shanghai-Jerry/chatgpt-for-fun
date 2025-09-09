@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目标列表 - 星目标管理</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/goals.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>星目标管理</h1>
+            <div id="total-stars-display">⭐ 总星数: <span id="total-stars-value">0</span></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="goal-list.html">目标列表</a></li>
+                <li><a href="goal-create.html">创建目标</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="goal-header">
+            <h2>所有目标</h2>
+            <a href="goal-create.html" class="btn">创建新目标</a>
+        </section>
+        
+        <section class="goal-filters">
+            <label for="category-filter">按类别筛选:</label>
+            <select id="category-filter">
+                <option value="all">全部类别</option>
+                <option value="work">工作</option>
+                <option value="study">学习</option>
+                <option value="health">健康</option>
+                <option value="personal">个人</option>
+            </select>
+        </section>
+        
+        <section class="goal-list" id="goal-list-container">
+            <!-- 目标列表将通过JavaScript动态加载 -->
+            <div class="loading">加载中...</div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 星目标管理系统</p>
+    </footer>
+    
+    <script src="../js/api.js"></script>
+    <script src="../js/goals.js"></script>
+    <script>
+        // 页面加载完成后获取所有目标
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllGoals();
+            // 获取并显示总星数
+            loadTotalStars();
+        });
+    </script>
+</body>
+</html>

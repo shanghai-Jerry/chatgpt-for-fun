@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目标详情 - 星目标管理</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/goals.css">
+</head>
+
+<body>
+    <header>
+        <h1>星目标管理</h1>
+        <nav>
+            <ul>
+                <li><a href="goal-list.html">目标列表</a></li>
+                <li><a href="goal-create.html">创建目标</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="goal-header">
+            <h2>目标详情</h2>
+            <div>
+                <a href="goal-list.html" class="btn">返回目标列表</a>
+                <button class="btn" id="edit-goal-btn">编辑目标</button>
+                <button class="btn" id="delete-goal-btn" style="background-color: #e74c3c;">删除目标</button>
+            </div>
+        </section>
+
+        <section class="goal-detail" id="goal-detail-container">
+            <!-- 目标详情将通过JavaScript动态加载 -->
+            <div class="loading">加载中...</div>
+        </section>
+        
+        <!-- 评论区域 -->
+        <section class="comments-section">
+            <h3>评论</h3>
+            <div class="comments-form">
+                <textarea id="comment-content" placeholder="请输入您的评论..."></textarea>
+                <button class="btn" id="submit-comment">发布评论</button>
+            </div>
+            <div class="comments-list" id="comments-container">
+                <div class="loading">加载评论中...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 星目标管理系统</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/goals.js"></script>
+    <script>
+        // 页面加载完成后获取目标详情
+        document.addEventListener('DOMContentLoaded', function () {
+            // 从URL参数获取目标ID
+            const urlParams = new URLSearchParams(window.location.search);
+            const goalId = urlParams.get('id');
+
+            if (goalId) {
+                loadGoalDetail(goalId);
+                // 加载评论
+                loadComments(goalId);
+            } else {
+                document.getElementById('goal-detail-container').innerHTML =
+                    '<div class="no-goals">未指定目标ID</div>';
+            }
+            
+            // 绑定发布评论按钮事件
+            document.getElementById('submit-comment').addEventListener('click', function () {
+                if (goalId) {
+                    submitComment(goalId);
+                }
+            });
+            
+            // 实现删除目标功能
+            document.getElementById('delete-goal-btn').addEventListener('click', function () {
+                if (confirm('确定要删除这个目标吗？')) {
+                    // deleteGoal(goalId);
+                    alert('删除目标，暂不支持');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,391 @@
+/* 目标管理页面样式 */
+
+/* 目标列表样式 */
+.goal-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.goal-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.goal-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.goal-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.category {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.stars {
+    font-size: 1.2rem;
+    color: #f39c12;
+    margin: 10px 0;
+}
+
+.description {
+    color: #666;
+    line-height: 1.5;
+    margin: 15px 0;
+}
+
+.goal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+.no-goals {
+    text-align: center;
+    color: #666;
+    padding: 40px;
+    font-size: 1.2rem;
+}
+
+/* 星星评分样式 */
+.star {
+    font-size: 1.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.star:hover {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.star.filled {
+    opacity: 1;
+    color: #f39c12;
+}
+
+/* 目标详情样式 */
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.goal-header h2 {
+    margin: 0;
+}
+
+.goal-detail {
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.goal-detail h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.goal-detail .stars {
+    font-size: 1.5rem;
+}
+
+.goal-detail .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.meta {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.meta p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* 每日评分记录样式 */
+.daily-ratings {
+    margin-top: 30px;
+}
+
+.daily-ratings h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.ratings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rating-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.rating-date {
+    color: #666;
+}
+
+.rating-stars {
+    font-size: 1.2rem;
+    color: #f39c12;
+}
+
+/* 评论区域样式 */
+.comments-section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.comments-section h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.comments-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.comments-form {
+    margin-bottom: 20px;
+}
+
+.comments-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.comment-item {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+}
+
+.comment-item:last-child {
+    border-bottom: none;
+}
+
+.comment-content {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.comment-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 新增：回复评论的样式 */
+.reply-item {
+    /* 多层级回复评论的样式 */
+    .reply-level-1 {
+        border-left: 3px solid #3498db;
+        margin-left: 20px;
+        padding-left: 15px;
+        margin-top: 10px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .reply-level-2 {
+        border-left: 3px solid #2ecc71;
+        margin-left: 40px;
+        padding-left: 15px;
+        margin-top: 10px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .reply-level-3 {
+        border-left: 3px solid #e74c3c;
+        margin-left: 60px;
+        padding-left: 15px;
+        margin-top: 10px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .reply-level-4 {
+        border-left: 3px solid #9b59b6;
+        margin-left: 80px;
+        padding-left: 15px;
+        margin-top: 10px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .reply-level-5 {
+        border-left: 3px solid #f39c12;
+        margin-left: 100px;
+        padding-left: 15px;
+        margin-top: 10px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .reply-level-1 .comment-meta,
+    .reply-level-2 .comment-meta,
+    .reply-level-3 .comment-meta,
+    .reply-level-4 .comment-meta,
+    .reply-level-5 .comment-meta {
+        font-size: 0.8rem;
+    }
+    font-size: 0.8rem;
+}
+
+.reply-form {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.no-comments {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+/* 收起/展开按钮样式 */
+.toggle-reply-btn {
+    background-color: #95a5a6;
+    margin-right: 10px;
+}
+
+.toggle-reply-btn:hover {
+    background-color: #7f8c8d;
+}
+
+/* 调整评论元数据区域的布局 */
+.comment-meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.comment-meta .comment-date {
+    margin-right: 10px;
+}
+
+.toggle-comments-btn {
+    background-color: #95a5a6;
+}
+
+.toggle-comments-btn:hover {
+    background-color: #7f8c8d;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .goal-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .goal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .goal-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* 在文件末尾添加取消回复按钮的样式 */
+.cancel-reply {
+    background-color: #95a5a6;
+    margin-left: 10px;
+}
+
+.cancel-reply:hover {
+    background-color: #7f8c8d;
+}
+
+/* 回复表单操作按钮容器 */
+.reply-form-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}

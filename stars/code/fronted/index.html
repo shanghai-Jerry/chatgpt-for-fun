@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星目标管理</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>星目标管理</h1>
+    <div id="total-stars-display">⭐ 总星数: <span id="total-stars">0</span></div>
+    <nav>
+      <ul>
+        <li><a href="pages/goal-list.html">目标列表</a></li>
+        <li><a href="pages/goal-create.html">创建目标</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>欢迎使用星目标管理系统</h2>
+      <p>在这里您可以创建、管理和追踪您的目标。</p>
+      <a href="pages/goal-list.html" class="btn">查看所有目标</a>
+      <a href="pages/goal-create.html" class="btn">创建新目标</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 星目标管理系统</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    // 页面加载完成后获取总星数
+    document.addEventListener('DOMContentLoaded', function() {
+        loadTotalStars();
+    });
+  </script>
+</body>
+
+</html>

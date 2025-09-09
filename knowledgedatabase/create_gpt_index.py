@@ -37,7 +37,7 @@ def construct_index(directory_path):
 
 if __name__ == '__main__':
     # API Key for OpenAI
-    os.environ["OPENAI_API_KEY"] = input(
-        "Paste your OpenAI API key here and hit enter:")
+    # os.environ["OPENAI_API_KEY"] = input(
+    #     "Paste your OpenAI API key here and hit enter:")
     construct_index(
         './contents')

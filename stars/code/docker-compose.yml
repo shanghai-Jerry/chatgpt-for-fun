@@ -1,0 +1,66 @@
+version: '3.8'
+services:
+  # MySQL数据库服务
+  starpool-db:
+    build:
+      context: ./deps/mysql
+      dockerfile: Dockerfile
+    container_name: starpool-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: starpool
+      MYSQL_USER: starpooluser
+      MYSQL_PASSWORD: starpoolpass
+    volumes:
+      - ./mysql-data:/var/lib/mysql # 挂载数据卷
+      - ./deps/mysql/init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - phpmyadmin-tier
+    restart: unless-stopped
+
+  # phpMyAdmin服务
+  phpmyadmin:
+    image: bitnami/phpmyadmin:latest
+    container_name: phpmyadmin
+    ports:
+      - "8081:8080"
+      - "8443:8443"
+    environment:
+      DATABASE_HOST: starpool-db
+      DATABASE_PORT: 3306
+      DATABASE_USER: root
+      DATABASE_PASSWORD: rootpassword
+    networks:
+      - phpmyadmin-tier
+    depends_on:
+      - starpool-db
+    restart: unless-stopped
+
+  # 后端服务
+  starpool-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: starpool-backend
+    ports:
+      - "8080:8080"
+    environment:
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+      DB_HOST: starpool-db
+      DB_PORT: 3306
+      DB_NAME: starpool
+    networks:
+      - phpmyadmin-tier
+    depends_on:
+      - starpool-db
+    restart: unless-stopped
+
+  # 前端服务
+
+# 定义网络
+networks:
+  phpmyadmin-tier:
+    driver: bridge

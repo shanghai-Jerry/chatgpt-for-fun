@@ -1,0 +1,4 @@
+gradio[mcp]
+smolagents[mcp]
+textblob
+smolagents[mcp]

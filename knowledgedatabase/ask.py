@@ -19,8 +19,8 @@ if __name__ == '__main__':
         sys.exit(1)
 
     # API Key for OpenAI
-    os.environ["OPENAI_API_KEY"] = input(
-        "Paste your OpenAI API key here and hit enter:")
+    # os.environ["OPENAI_API_KEY"] = input(
+    #   "Paste your OpenAI API key here and hit enter:")
     # 通过索引访问参数
     arg1 = sys.argv[1]
     ask_question(arg1)
